@@ -2,78 +2,102 @@ services:
   redis-node-1:
     image: redis:7.0.14
     container_name: redis-node-1
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7001:6379"
+    volumes:
+      - redis-node-1-data:/data
     networks:
       - redis-cluster
 
   redis-node-2:
     image: redis:7.0.14
     container_name: redis-node-2
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7002:6379"
+    volumes:
+      - redis-node-2-data:/data
     networks:
       - redis-cluster
 
   redis-node-3:
     image: redis:7.0.14
     container_name: redis-node-3
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7003:6379"
+    volumes:
+      - redis-node-3-data:/data
     networks:
       - redis-cluster
 
   redis-node-4:
     image: redis:7.0.14
     container_name: redis-node-4
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7004:6379"
+    volumes:
+      - redis-node-4-data:/data
     networks:
       - redis-cluster
 
   redis-node-5:
     image: redis:7.0.14
     container_name: redis-node-5
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7005:6379"
+    volumes:
+      - redis-node-5-data:/data
     networks:
       - redis-cluster
 
   redis-node-6:
     image: redis:7.0.14
     container_name: redis-node-6
+    restart: unless-stopped
     command: [ "redis-server", "--cluster-enabled", "yes",
-               "--cluster-config-file", "nodes.conf",
+               "--cluster-config-file", "/data/nodes.conf",
                "--cluster-node-timeout", "5000",
                "--appendonly", "yes",
+               "--dir", "/data",
                "--protected-mode", "no" ]
     ports:
       - "7006:6379"
+    volumes:
+      - redis-node-6-data:/data
     networks:
       - redis-cluster
 
@@ -81,6 +105,7 @@ services:
   redis-cluster-creator:
     image: redis:7.0.14
     container_name: redis-cluster-creator
+    restart: "no"
     depends_on:
       - redis-node-1
       - redis-node-2
@@ -98,6 +123,14 @@ services:
       "
     networks:
       - redis-cluster
+
+volumes:
+  redis-node-1-data:
+  redis-node-2-data:
+  redis-node-3-data:
+  redis-node-4-data:
+  redis-node-5-data:
+  redis-node-6-data:
 
 networks:
   redis-cluster:

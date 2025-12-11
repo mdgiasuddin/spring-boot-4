@@ -7,6 +7,7 @@ services:
     image: confluentinc/cp-kafka:7.8.0
     hostname: kafka1
     container_name: kafka1
+    restart: unless-stopped
     ports:
       - "9092:9092"
       - "9093:9093"
@@ -35,6 +36,7 @@ services:
     image: confluentinc/cp-kafka:7.8.0
     hostname: kafka2
     container_name: kafka2
+    restart: unless-stopped
     ports:
       - "9094:9092"
       - "9095:9093"
@@ -63,6 +65,7 @@ services:
     image: confluentinc/cp-kafka:7.8.0
     hostname: kafka3
     container_name: kafka3
+    restart: unless-stopped
     ports:
       - "9096:9092"
       - "9097:9093"
@@ -90,6 +93,7 @@ services:
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-cluster-ui
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:

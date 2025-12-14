@@ -9,7 +9,7 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
-      - ELASTIC_PASSWORD=MyElasticPass123
+      - ELASTIC_PASSWORD=elastic_pass_123
       - xpack.security.enabled=true
     ulimits:
       memlock:
@@ -18,8 +18,23 @@ services:
     volumes:
       - es-data:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
-      - 9300:9300
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - es-net
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.10
+    container_name: kibana
+    restart: unless-stopped
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=elastic_pass_123
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
     networks:
       - es-net
 

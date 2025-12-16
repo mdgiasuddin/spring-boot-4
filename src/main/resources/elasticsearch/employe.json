@@ -1,0 +1,364 @@
+PUT employee
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+      "firstName": {
+        "type": "text"
+      },
+      "lastName": {
+        "type": "text"
+      },
+      "dob": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      },
+      "email": {
+        "type": "keyword"
+      },
+      "phoneNumber": {
+        "type": "keyword"
+      },
+      "occupation": {
+        "type": "keyword"
+      },
+      "country": {
+        "type": "keyword"
+      },
+      "salary": {
+        "type": "double"
+      },
+      "bio": {
+        "type": "text"
+      }
+    }
+  }
+}
+
+
+
+POST employee/_bulk
+{
+  "index": {
+    "_id": 1
+  }
+}
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "dob": "1985-03-15",
+  "email": "john.doe@example.com",
+  "phoneNumber": "+8801700000001",
+  "occupation": "Software Engineer",
+  "country": "Bangladesh",
+  "salary": 85000,
+  "bio": "John Doe is a senior software engineer with over a decade of experience in designing and building enterprise-grade backend systems. He has worked extensively with microservices architectures, cloud platforms, and distributed systems. John enjoys writing clean, maintainable code and mentoring junior engineers to help them grow professionally."
+}
+{
+  "index": {
+    "_id": 2
+  }
+}
+{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "dob": "1990-07-22",
+  "email": "jane.smith@example.com",
+  "phoneNumber": "+8801700000002",
+  "occupation": "Product Manager",
+  "country": "USA",
+  "salary": 95000,
+  "bio": "Jane Smith is an experienced product manager who specializes in converting complex business requirements into scalable product solutions. She has led cross-functional teams across engineering, design, and marketing. Jane believes in customer-centric design, data-driven decisions, and continuous product improvement."
+}
+{
+  "index": {
+    "_id": 3
+  }
+}
+{
+  "firstName": "Rahim",
+  "lastName": "Ahmed",
+  "dob": "1988-11-10",
+  "email": "rahim.ahmed@example.com",
+  "phoneNumber": "+8801700000003",
+  "occupation": "Data Analyst",
+  "country": "Bangladesh",
+  "salary": 72000,
+  "bio": "Rahim Ahmed is a skilled data analyst with deep expertise in SQL, Python, and data visualization tools. He has worked with large datasets to identify trends and provide insights for strategic decision-making. Rahim enjoys transforming raw data into meaningful stories that drive measurable business outcomes."
+}
+{
+  "index": {
+    "_id": 4
+  }
+}
+{
+  "firstName": "Emily",
+  "lastName": "Brown",
+  "dob": "1992-02-18",
+  "email": "emily.brown@example.com",
+  "phoneNumber": "+8801700000004",
+  "occupation": "UX Designer",
+  "country": "UK",
+  "salary": 68000,
+  "bio": "Emily Brown is a user experience designer passionate about creating intuitive, accessible, and visually appealing interfaces. She collaborates closely with developers and product teams to ensure user needs are met effectively. Emily believes strong research and empathy are essential components of great digital design."
+}
+{
+  "index": {
+    "_id": 5
+  }
+}
+{
+  "firstName": "Michael",
+  "lastName": "Johnson",
+  "dob": "1983-09-05",
+  "email": "michael.johnson@example.com",
+  "phoneNumber": "+8801700000005",
+  "occupation": "DevOps Engineer",
+  "country": "Canada",
+  "salary": 98000,
+  "bio": "Michael Johnson is a DevOps engineer with extensive experience in CI/CD automation, container orchestration, and cloud infrastructure management. He has helped organizations improve deployment reliability and system resilience. Michael is passionate about infrastructure as code and building scalable, fault-tolerant systems."
+}
+{
+  "index": {
+    "_id": 6
+  }
+}
+{
+  "firstName": "Ayesha",
+  "lastName": "Khan",
+  "dob": "1995-06-12",
+  "email": "ayesha.khan@example.com",
+  "phoneNumber": "+8801700000006",
+  "occupation": "Marketing Specialist",
+  "country": "Bangladesh",
+  "salary": 55000,
+  "bio": "Ayesha Khan is a digital marketing specialist with expertise in content strategy, social media marketing, and online advertising campaigns. She has successfully managed campaigns that increased brand visibility and engagement. Ayesha enjoys analyzing performance metrics and optimizing marketing strategies for better ROI."
+}
+{
+  "index": {
+    "_id": 7
+  }
+}
+{
+  "firstName": "David",
+  "lastName": "Wilson",
+  "dob": "1987-01-25",
+  "email": "david.wilson@example.com",
+  "phoneNumber": "+8801700000007",
+  "occupation": "Business Analyst",
+  "country": "Australia",
+  "salary": 82000,
+  "bio": "David Wilson is a business analyst with a strong background in requirements analysis and process improvement. He works closely with stakeholders to align business goals with technical solutions. David is known for his clear documentation, analytical mindset, and ability to translate complex needs into actionable plans."
+}
+{
+  "index": {
+    "_id": 8
+  }
+}
+{
+  "firstName": "Sophia",
+  "lastName": "Taylor",
+  "dob": "1993-04-30",
+  "email": "sophia.taylor@example.com",
+  "phoneNumber": "+8801700000008",
+  "occupation": "HR Manager",
+  "country": "Germany",
+  "salary": 78000,
+  "bio": "Sophia Taylor is an HR manager with experience in talent acquisition, employee engagement, and organizational development. She has implemented HR initiatives that improved employee satisfaction and retention. Sophia believes that a positive workplace culture is critical to long-term organizational success."
+}
+{
+  "index": {
+    "_id": 9
+  }
+}
+{
+  "firstName": "Arif",
+  "lastName": "Hossain",
+  "dob": "1986-12-08",
+  "email": "arif.hossain@example.com",
+  "phoneNumber": "+8801700000009",
+  "occupation": "System Administrator",
+  "country": "Bangladesh",
+  "salary": 70000,
+  "bio": "Arif Hossain is a system administrator responsible for maintaining secure and highly available IT infrastructure. He has extensive experience managing Linux servers, monitoring systems, and handling incident response. Arif focuses on automation, proactive monitoring, and ensuring maximum uptime for critical services."
+}
+{
+  "index": {
+    "_id": 10
+  }
+}
+{
+  "firstName": "Olivia",
+  "lastName": "Martinez",
+  "dob": "1991-08-14",
+  "email": "olivia.martinez@example.com",
+  "phoneNumber": "+8801700000010",
+  "occupation": "Content Writer",
+  "country": "Spain",
+  "salary": 60000,
+  "bio": "Olivia Martinez is a professional content writer who creates engaging and informative content across multiple platforms. She has written blogs, marketing materials, and technical documentation for diverse audiences. Olivia believes that well-crafted content can educate readers, strengthen brand identity, and build lasting trust."
+}
+
+{
+  "index": {
+    "_id": 11
+  }
+}
+{
+  "firstName": "Daniel",
+  "lastName": "Lee",
+  "dob": "1989-05-19",
+  "email": "daniel.lee@example.com",
+  "phoneNumber": "+8801700000011",
+  "occupation": "Cloud Architect",
+  "country": "Singapore",
+  "salary": 105000,
+  "bio": "Daniel Lee is a cloud architect with deep expertise in designing secure, scalable cloud environments. He has led multiple cloud migration projects and helped organizations modernize legacy systems. Daniel enjoys optimizing cloud costs, implementing security best practices, and mentoring engineering teams."
+}
+{
+  "index": {
+    "_id": 12
+  }
+}
+{
+  "firstName": "Fatima",
+  "lastName": "Rahman",
+  "dob": "1994-10-03",
+  "email": "fatima.rahman@example.com",
+  "phoneNumber": "+8801700000012",
+  "occupation": "QA Engineer",
+  "country": "Bangladesh",
+  "salary": 65000,
+  "bio": "Fatima Rahman is a quality assurance engineer focused on ensuring software reliability and performance. She has experience with both manual and automated testing across web and mobile applications. Fatima believes early testing and strong collaboration with developers are essential for delivering high-quality software."
+}
+{
+  "index": {
+    "_id": 13
+  }
+}
+{
+  "firstName": "Lucas",
+  "lastName": "Miller",
+  "dob": "1984-03-27",
+  "email": "lucas.miller@example.com",
+  "phoneNumber": "+8801700000013",
+  "occupation": "Finance Manager",
+  "country": "USA",
+  "salary": 110000,
+  "bio": "Lucas Miller is a finance manager with extensive experience in financial planning, forecasting, and risk management. He supports leadership teams with accurate financial insights and strategic recommendations. Lucas values transparency, disciplined budgeting, and long-term financial sustainability."
+}
+{
+  "index": {
+    "_id": 14
+  }
+}
+{
+  "firstName": "Nusrat",
+  "lastName": "Jahan",
+  "dob": "1996-12-11",
+  "email": "nusrat.jahan@example.com",
+  "phoneNumber": "+8801700000014",
+  "occupation": "Research Assistant",
+  "country": "Bangladesh",
+  "salary": 52000,
+  "bio": "Nusrat Jahan is a research assistant with strong analytical and documentation skills. She has contributed to academic and industry research projects involving data analysis and reporting. Nusrat enjoys learning new methodologies and transforming research findings into actionable insights."
+}
+{
+  "index": {
+    "_id": 15
+  }
+}
+{
+  "firstName": "Robert",
+  "lastName": "Anderson",
+  "dob": "1979-06-08",
+  "email": "robert.anderson@example.com",
+  "phoneNumber": "+8801700000015",
+  "occupation": "Operations Manager",
+  "country": "Norway",
+  "salary": 115000,
+  "bio": "Robert Anderson is an operations manager with over fifteen years of experience in improving operational efficiency and managing large teams. He has led initiatives that reduced costs and improved service delivery. Robert believes strong leadership and well-defined processes are key to organizational success."
+}
+{
+  "index": {
+    "_id": 16
+  }
+}
+{
+  "firstName": "Mehedi",
+  "lastName": "Hasan",
+  "dob": "1992-09-17",
+  "email": "mehedi.hasan@example.com",
+  "phoneNumber": "+8801700000016",
+  "occupation": "Mobile App Developer",
+  "country": "Bangladesh",
+  "salary": 88000,
+  "bio": "Mehedi Hasan is a mobile application developer specializing in Android and cross-platform technologies. He has built and maintained applications used by thousands of users. Mehedi enjoys solving challenging problems, improving app performance, and staying updated with the latest mobile development trends."
+}
+{
+  "index": {
+    "_id": 17
+  }
+}
+{
+  "firstName": "Isabella",
+  "lastName": "Rossi",
+  "dob": "1991-01-29",
+  "email": "isabella.rossi@example.com",
+  "phoneNumber": "+8801700000017",
+  "occupation": "Legal Consultant",
+  "country": "Italy",
+  "salary": 102000,
+  "bio": "Isabella Rossi is a legal consultant with expertise in corporate law and regulatory compliance. She advises organizations on contract management and legal risk mitigation. Isabella values ethical practices, attention to detail, and helping businesses operate confidently within complex legal frameworks."
+}
+{
+  "index": {
+    "_id": 18
+  }
+}
+{
+  "firstName": "Samiul",
+  "lastName": "Islam",
+  "dob": "1987-11-02",
+  "email": "samiul.islam@example.com",
+  "phoneNumber": "+8801700000018",
+  "occupation": "Network Engineer",
+  "country": "Bangladesh",
+  "salary": 90000,
+  "bio": "Samiul Islam is a network engineer with expertise in enterprise networking, routing, and security protocols. He has designed and maintained reliable network infrastructures for large organizations. Samiul focuses on performance optimization, security best practices, and ensuring stable system communication."
+}
+{
+  "index": {
+    "_id": 19
+  }
+}
+{
+  "firstName": "Emma",
+  "lastName": "Clark",
+  "dob": "1993-07-21",
+  "email": "emma.clark@example.com",
+  "phoneNumber": "+8801700000019",
+  "occupation": "Digital Strategist",
+  "country": "Netherlands",
+  "salary": 92000,
+  "bio": "Emma Clark is a digital strategist with expertise in online growth strategies, analytics, and customer engagement. She has helped brands strengthen their digital presence through data-driven initiatives. Emma enjoys combining creativity with analytical thinking to deliver measurable business impact."
+}
+{
+  "index": {
+    "_id": 20
+  }
+}
+{
+  "firstName": "Tanvir",
+  "lastName": "Mahmud",
+  "dob": "1985-02-13",
+  "email": "tanvir.mahmud@example.com",
+  "phoneNumber": "+8801700000020",
+  "occupation": "IT Project Manager",
+  "country": "Bangladesh",
+  "salary": 98000,
+  "bio": "Tanvir Mahmud is an IT project manager with extensive experience delivering complex technology projects. He has coordinated cross-functional teams and managed stakeholders effectively. Tanvir emphasizes clear communication, risk management, and continuous improvement throughout the project lifecycle."
+}

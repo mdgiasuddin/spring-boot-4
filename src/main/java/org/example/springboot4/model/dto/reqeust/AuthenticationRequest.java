@@ -2,8 +2,10 @@ package org.example.springboot4.model.dto.reqeust;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record AuthRequest(
+public record AuthenticationRequest(
         @NotBlank
-        String token
+        String username,
+        @NotBlank
+        String password
 ) {
 }

@@ -28,7 +28,7 @@ public class JwtService {
     @Value("${application.security.jwt.signing-key}")
     private String signingKey;
 
-    public String extractEmail(String token) {
+    public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -37,16 +37,16 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(String email) {
-        long expiration = 10;
-        return generateToken(new HashMap<>(), email, expiration);
+    public String generateToken(String username) {
+        long expiration = 720;
+        return generateToken(new HashMap<>(), username, expiration);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, String email, long expiration) {
+    public String generateToken(Map<String, Object> extraClaims, String username, long expiration) {
         return Jwts
                 .builder()
                 .claims(extraClaims)
-                .subject(email)
+                .subject(username)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expiration * 60 * 1000))
                 .signWith(createSignKey())

@@ -37,12 +37,32 @@ public class ElasticSearchService {
         }
 
         if (request.surnameRegex() != null) {
-            Query nameRegexQuery = Query.of(q -> q.wildcard(
+            Query nameWildcardQuery = Query.of(q -> q.wildcard(
                     w -> w.field("lastName")
                             .caseInsensitive(true)
                             .value(request.surnameRegex())
             ));
-            boolQuery.must(nameRegexQuery);
+            boolQuery.should(nameWildcardQuery);
+
+            Query namePrefixQuery = Query.of(q -> q.prefix(
+                    p -> p.field("lastName")
+                            .value(request.surnameRegex())
+                            .caseInsensitive(true)
+            ));
+            boolQuery.should(namePrefixQuery);
+
+            Query namePhrasePrefixQuery = Query.of(q -> q.matchPhrasePrefix(
+                    m -> m.field("lastName")
+                            .query(request.surnameRegex())
+            ));
+            boolQuery.should(namePhrasePrefixQuery);
+
+            Query nameRegexQuery = Query.of(q -> q.regexp(
+                    r -> r.field("lastName")
+                            .value(request.surnameRegex())
+                            .caseInsensitive(true)
+            ));
+            boolQuery.should(nameRegexQuery);
         }
 
         if (request.country() != null) {

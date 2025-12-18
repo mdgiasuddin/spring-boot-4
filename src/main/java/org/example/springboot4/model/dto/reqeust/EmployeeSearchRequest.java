@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public record EmployeeSearchRequest(
         String name,
+        String surnameRegex,
         String country,
         String occupation,
         @DateTimeFormat(pattern = "yyyy-MM-dd")

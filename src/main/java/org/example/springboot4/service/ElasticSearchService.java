@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EmployeeService {
+public class ElasticSearchService {
 
     private final ElasticsearchOperations elasticsearchOperations;
 
@@ -34,6 +34,15 @@ public class EmployeeService {
             ));
 
             boolQuery.must(nameQuery);
+        }
+
+        if (request.surnameRegex() != null) {
+            Query nameRegexQuery = Query.of(q -> q.wildcard(
+                    w -> w.field("lastName")
+                            .caseInsensitive(true)
+                            .value(request.surnameRegex())
+            ));
+            boolQuery.must(nameRegexQuery);
         }
 
         if (request.country() != null) {

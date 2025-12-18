@@ -3,7 +3,7 @@ package org.example.springboot4.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.springboot4.model.dto.reqeust.EmployeeSearchRequest;
 import org.example.springboot4.model.entity.Employee;
-import org.example.springboot4.service.EmployeeService;
+import org.example.springboot4.service.ElasticSearchService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/api/elasticsearch")
 @RequiredArgsConstructor
-public class EmployeeController {
+public class ElasticsearchController {
 
-    private final EmployeeService employeeService;
+    private final ElasticSearchService elasticSearchService;
 
-    @GetMapping("/search")
+    @GetMapping("/employees/search")
     public List<Employee> search(
             EmployeeSearchRequest request
     ) {
-        return employeeService.searchPersons(request);
+        return elasticSearchService.searchPersons(request);
     }
 }

@@ -22,3 +22,35 @@ This project uses Spring-boot latest version (Spring-boot:4.x.x).
 
 `sudo docker compose -f docker-compose-redis.yml up -d`
 
+#### Setup Cassandra
+
+`sudo docker compose -f docker-compose-cassandra.yml up -d`
+
+##### Open Cassandra Console
+
+`docker exec -it cassandra cqlsh`
+
+##### Create Keyspace
+
+```
+CREATE KEYSPACE userks
+WITH replication = {
+  'class': 'SimpleStrategy',
+  'replication_factor': 1
+};
+```
+
+##### Create Table
+
+```
+USE userks;
+
+CREATE TABLE user_activity (
+  user_id UUID,
+  activity_time TIMESTAMP,
+  activity_type TEXT,
+  metadata TEXT,
+  PRIMARY KEY (user_id, activity_time)
+) WITH CLUSTERING ORDER BY (activity_time DESC);
+```
+

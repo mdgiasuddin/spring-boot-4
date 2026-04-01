@@ -28,7 +28,7 @@ This project uses Spring-boot latest version (Spring-boot:4.x.x).
 
 ##### Open Cassandra Console
 
-`docker exec -it cassandra cqlsh`
+`sudo docker exec -it cassandra cqlsh`
 
 ##### Create Keyspace
 

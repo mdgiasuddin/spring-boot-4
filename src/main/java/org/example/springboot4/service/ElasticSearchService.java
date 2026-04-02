@@ -103,7 +103,13 @@ public class ElasticSearchService {
 
         if (request.bioText() != null) {
             Query bioQuery = new Query.Builder()
-                    .match(m -> m.field("bio").query(request.bioText()))
+                    .match(m -> m
+                            .field("bio")
+                            .query(request.bioText())
+                            .fuzziness("2")
+                            .prefixLength(2)
+                            .maxExpansions(25)
+                    )
                     .build();
 
             boolQuery.must(bioQuery);

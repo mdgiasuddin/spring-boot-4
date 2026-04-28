@@ -114,7 +114,7 @@ public class ElasticSearchService {
 
             boolQuery.must(bioQuery);
         }
-
+        boolQuery.minimumShouldMatch("3");
         NativeQuery query = NativeQuery.builder()
                 .withQuery(q -> q.bool(boolQuery.build()))
                 .build();

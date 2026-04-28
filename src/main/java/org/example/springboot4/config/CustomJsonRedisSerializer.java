@@ -17,20 +17,17 @@ public class CustomJsonRedisSerializer<T> implements RedisSerializer<T> {
 
     @Override
     public byte[] serialize(T value) throws SerializationException {
-        try {
-            return mapper.writeValueAsBytes(value);
-        } catch (Exception e) {
-            throw new SerializationException("Could not serialize", e);
-        }
+        if (value == null)
+            return new byte[0];
+
+        return mapper.writeValueAsBytes(value);
     }
 
     @Override
     public T deserialize(byte[] bytes) throws SerializationException {
-        if (bytes.length == 0) return null;
-        try {
-            return mapper.readValue(bytes, javaType);
-        } catch (Exception e) {
-            throw new SerializationException("Could not deserialize", e);
-        }
+        if (bytes == null || bytes.length == 0)
+            return null;
+
+        return mapper.readValue(bytes, javaType);
     }
 }
